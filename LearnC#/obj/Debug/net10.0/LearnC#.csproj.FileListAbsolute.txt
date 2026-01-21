@@ -1,0 +1,14 @@
+C:\C#\CleanArchitecture\LearnC#\bin\Debug\net10.0\LearnC#.exe
+C:\C#\CleanArchitecture\LearnC#\bin\Debug\net10.0\LearnC#.deps.json
+C:\C#\CleanArchitecture\LearnC#\bin\Debug\net10.0\LearnC#.runtimeconfig.json
+C:\C#\CleanArchitecture\LearnC#\bin\Debug\net10.0\LearnC#.dll
+C:\C#\CleanArchitecture\LearnC#\bin\Debug\net10.0\LearnC#.pdb
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.AssemblyInfoInputs.cache
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.AssemblyInfo.cs
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.csproj.CoreCompileInputs.cache
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.dll
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\refint\LearnC#.dll
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.pdb
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\LearnC#.genruntimeconfig.cache
+C:\C#\CleanArchitecture\LearnC#\obj\Debug\net10.0\ref\LearnC#.dll
