@@ -37,7 +37,7 @@ namespace CleanArchitecture.Infrastructure.Data
             new Customer { Id = 7, Name = "Frank Green", Email = "unprogress", PhoneNumber = "000-111-2222" },
             ];
         public static List<Order> Orders = [
-            new Order { Id = 1, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-10), TotalAmount = 899.98M },
+            new Order { Id = 1, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-2), TotalAmount = 899.98M },
             new Order { Id = 2, CustomerId = 2, OrderDate = DateTime.Now.AddDays(-5), TotalAmount = 199.99M },
             new Order { Id = 3, CustomerId = 3, OrderDate = DateTime.Now.AddDays(-2), TotalAmount = 1299.99M },
             new Order { Id = 4, CustomerId = 4, OrderDate = DateTime.Now.AddDays(-1), TotalAmount = 699.99M },

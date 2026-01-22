@@ -168,3 +168,4 @@ C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\zh-Hant\Microsof
 C:\C#\CleanArchitecture\CleanArchitecture.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\Dapper.dll
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\AutoMapper.dll
+C:\C#\CleanArchitecture\CleanArchitecture.API\obj\Debug\net10.0\CleanArchitecture.API.sourcelink.json
