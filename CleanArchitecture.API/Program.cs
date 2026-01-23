@@ -1,18 +1,28 @@
 ﻿using CleanArchitecture.API.Middlewares;
+using CleanArchitecture.Application.DTOs.Validation;
 using CleanArchitecture.Application.IRepository;
 using CleanArchitecture.Application.IService;
 using CleanArchitecture.Application.Service;
 using CleanArchitecture.Infrastructure.Repository;
+using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.PropertyNamingPolicy = null;
-});
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // 1. QUAN TRỌNG NHẤT: Cho phép dấu phẩy thừa ở cuối (Fix lỗi 500 hiện tại)
+        options.JsonSerializerOptions.AllowTrailingCommas = true;
 
+        // 2. Cho phép đọc số từ chuỗi (ví dụ "123" map được vào int 123)
+        options.JsonSerializerOptions.NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString;
+
+        // 3. Giữ nguyên tên property (Code cũ của bạn)
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    });
 builder.Services.AddDbContext<CleanArchitecture.Infrastructure.Data.ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -40,6 +50,36 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
+builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
+
+builder.Services.Configure<Microsoft.AspNetCore.Mvc.ApiBehaviorOptions>(options =>
+{
+    // Ghi đè cách trả về lỗi của [ApiController]
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        // Lấy danh sách lỗi từ ModelState
+        var errors = context.ModelState
+                    .Where(e => e.Value!.Errors.Any())
+                    .Select(e => new
+                    {
+                        Field = e.Key,
+                        Messages = e.Value!.Errors.Select(x => x.ErrorMessage)
+                    });
+
+
+        return new BadRequestObjectResult(new ValidationErrorResponseDto
+        {
+            StatusCode = 400,
+            Message = "Validation failed",
+            Errors = errors,
+            Timestamp = DateTime.UtcNow
+        }); ;
+    };
+});
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();

@@ -165,7 +165,12 @@ C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\ru\Microsoft.Cod
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
-C:\C#\CleanArchitecture\CleanArchitecture.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\Dapper.dll
 C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\AutoMapper.dll
 C:\C#\CleanArchitecture\CleanArchitecture.API\obj\Debug\net10.0\CleanArchitecture.API.sourcelink.json
+C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\FluentValidation.dll
+C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\MediatR.dll
+C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\MediatR.Contracts.dll
+C:\C#\CleanArchitecture\CleanArchitecture.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\C#\CleanArchitecture\CleanArchitecture.API\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

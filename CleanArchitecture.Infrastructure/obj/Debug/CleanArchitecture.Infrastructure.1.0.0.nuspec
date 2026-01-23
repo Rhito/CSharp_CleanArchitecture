@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CleanArchitecture.Infrastructure</id>
+    <version>1.0.0</version>
+    <authors>CleanArchitecture.Infrastructure</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="e4159345174ec4a69eb452cd69e5a02512d6e22c" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="CleanArchitecture.Application" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Dapper" version="2.1.66" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Identity.EntityFrameworkCore" version="10.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="10.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\C#\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\net10.0\CleanArchitecture.Infrastructure.runtimeconfig.json" target="lib\net10.0\CleanArchitecture.Infrastructure.runtimeconfig.json" />
+    <file src="C:\C#\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\net10.0\CleanArchitecture.Infrastructure.dll" target="lib\net10.0\CleanArchitecture.Infrastructure.dll" />
+  </files>
+</package>

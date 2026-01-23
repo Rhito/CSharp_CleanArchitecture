@@ -3,7 +3,7 @@ using CleanArchitecture.Application.Filters;
 using CleanArchitecture.Application.IService;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArchitecture.API.Controller
+namespace CleanArchitecture.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

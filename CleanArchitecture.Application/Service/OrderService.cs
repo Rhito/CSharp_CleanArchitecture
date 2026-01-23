@@ -50,9 +50,7 @@ namespace CleanArchitecture.Application.Service
         public async Task<IEnumerable<OrderResponseDto>> SearchAsync(OrderSearchFilter filter)
         {
             if(filter.PageNumber <= 0 || filter.PageSize <= 0)
-                throw new ArgumentException("PageNumber and PageSize must be greater than zero.");
-            if(string.IsNullOrWhiteSpace(filter.Keyword))
-                throw new ArgumentException("Keyword must not be null or empty.");
+                throw new ArgumentException("PageNumber and PageSize must be greater than zero.");     
             var orders = await _orderRepository.SearchAsync(filter);
             return orders.Select(o => MapToResponse(o));
         }

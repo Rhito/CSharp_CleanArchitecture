@@ -28,6 +28,8 @@ namespace CleanArchitecture.Infrastructure.Repository
             {
                 query = query.Where(o => o.OrderCode.Contains(filter.Keyword));
             }
+            // Sắp xếp mặc định (nên có để phân trang ổn định)
+            query = query.OrderByDescending(c => c.Id);
             return await query
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)

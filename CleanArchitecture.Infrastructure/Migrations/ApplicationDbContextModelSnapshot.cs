@@ -40,26 +40,6 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Electronic gadgets and devices",
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Various kinds of books",
-                            Name = "Books"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Apparel and accessories",
-                            Name = "Clothing"
-                        });
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Customer", b =>
@@ -93,44 +73,6 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2026, 1, 21, 16, 2, 34, 931, DateTimeKind.Local).AddTicks(7544),
-                            Email = "JohnDeo@example.com",
-                            IsDeleted = false,
-                            Name = "John Doe",
-                            PhoneNumber = "123-456-7890"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2026, 1, 21, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(4558),
-                            Email = "JaneSmith@example.com",
-                            IsDeleted = false,
-                            Name = "Jane Smith",
-                            PhoneNumber = "987-654-3210"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedAt = new DateTime(2026, 1, 21, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(4568),
-                            Email = "Alice@mailer.com",
-                            IsDeleted = false,
-                            Name = "Alice Johnson",
-                            PhoneNumber = "555-123-4567"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedAt = new DateTime(2026, 1, 21, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(4570),
-                            Email = "SpownBob@cc.com",
-                            IsDeleted = false,
-                            Name = "Bob Brown",
-                            PhoneNumber = "444-555-6666"
-                        });
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Order", b =>
@@ -159,40 +101,6 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CustomerId = 1,
-                            OrderCode = "",
-                            OrderDate = new DateTime(2026, 1, 11, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(5234),
-                            TotalAmount = 899.98m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CustomerId = 2,
-                            OrderCode = "",
-                            OrderDate = new DateTime(2026, 1, 16, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(5562),
-                            TotalAmount = 199.99m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CustomerId = 3,
-                            OrderCode = "",
-                            OrderDate = new DateTime(2026, 1, 19, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(5565),
-                            TotalAmount = 1299.99m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CustomerId = 4,
-                            OrderCode = "",
-                            OrderDate = new DateTime(2026, 1, 20, 16, 2, 34, 932, DateTimeKind.Local).AddTicks(5567),
-                            TotalAmount = 699.99m
-                        });
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.OrderDetail", b =>
@@ -222,48 +130,6 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            OrderId = 1,
-                            ProductId = 1,
-                            Quantity = 1,
-                            UnitPrice = 699.99m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            OrderId = 1,
-                            ProductId = 3,
-                            Quantity = 1,
-                            UnitPrice = 199.99m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            OrderId = 2,
-                            ProductId = 5,
-                            Quantity = 1,
-                            UnitPrice = 199.99m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            OrderId = 3,
-                            ProductId = 2,
-                            Quantity = 1,
-                            UnitPrice = 1299.99m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            OrderId = 4,
-                            ProductId = 1,
-                            Quantity = 1,
-                            UnitPrice = 699.99m
-                        });
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Product", b =>
@@ -298,58 +164,212 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Description = "Latest model smartphone",
-                            IsDeleted = false,
-                            Name = "Smartphone",
-                            Price = 699.99m,
-                            StockQuantity = 50
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            Description = "High performance laptop",
-                            IsDeleted = false,
-                            Name = "Laptop",
-                            Price = 1299.99m,
-                            StockQuantity = 30
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            Description = "Bestselling fiction mouse",
-                            IsDeleted = false,
-                            Name = "Mouse",
-                            Price = 19.99m,
-                            StockQuantity = 100
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 3,
-                            Description = "High quality and high light power",
-                            IsDeleted = false,
-                            Name = "Display Screen",
-                            Price = 9.99m,
-                            StockQuantity = 200
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 1,
-                            Description = "Noise-cancelling headphones",
-                            IsDeleted = false,
-                            Name = "Headphones",
-                            Price = 199.99m,
-                            StockQuantity = 75
-                        });
+            modelBuilder.Entity("CleanArchitecture.Infrastructure.Data.Entities.ApplicationRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("CleanArchitecture.Infrastructure.Data.Entities.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Order", b =>
@@ -391,6 +411,57 @@ namespace CleanArchitecture.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("CleanArchitecture.Infrastructure.Data.Entities.ApplicationRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("CleanArchitecture.Infrastructure.Data.Entities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("CleanArchitecture.Infrastructure.Data.Entities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("CleanArchitecture.Infrastructure.Data.Entities.ApplicationRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CleanArchitecture.Infrastructure.Data.Entities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("CleanArchitecture.Infrastructure.Data.Entities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Category", b =>

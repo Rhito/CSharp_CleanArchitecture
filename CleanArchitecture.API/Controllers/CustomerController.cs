@@ -4,7 +4,7 @@ using CleanArchitecture.Application.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArchitecture.API.Controller
+namespace CleanArchitecture.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

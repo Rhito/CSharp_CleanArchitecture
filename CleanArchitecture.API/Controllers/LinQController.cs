@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace CleanArchitecture.API.Controller
+namespace CleanArchitecture.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

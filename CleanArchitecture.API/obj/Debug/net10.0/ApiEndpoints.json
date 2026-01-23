@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "CleanArchitecture.API.Controller.LinQController",
+    "ContainingType": "CleanArchitecture.API.Controllers.LinQController",
     "Method": "Aggregation",
     "RelativePath": "aggregation",
     "HttpMethod": "GET",
@@ -10,7 +10,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CategoryController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CategoryController",
     "Method": "GetAllCategories",
     "RelativePath": "api/Category",
     "HttpMethod": "GET",
@@ -20,7 +20,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CategoryController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CategoryController",
     "Method": "CreateCategory",
     "RelativePath": "api/Category",
     "HttpMethod": "POST",
@@ -36,7 +36,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CategoryController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CategoryController",
     "Method": "GetCategoryById",
     "RelativePath": "api/Category/{id}",
     "HttpMethod": "GET",
@@ -52,7 +52,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CategoryController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CategoryController",
     "Method": "DeleteCategory",
     "RelativePath": "api/Category/{id}",
     "HttpMethod": "DELETE",
@@ -68,7 +68,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CategoryController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CategoryController",
     "Method": "UpdateCategory",
     "RelativePath": "api/Category/{id}",
     "HttpMethod": "PATCH",
@@ -89,7 +89,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "GetCustomers",
     "RelativePath": "api/Customer",
     "HttpMethod": "GET",
@@ -130,7 +130,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "CreateCustomer",
     "RelativePath": "api/Customer",
     "HttpMethod": "POST",
@@ -146,7 +146,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "GetCustomerById",
     "RelativePath": "api/Customer/{id}",
     "HttpMethod": "GET",
@@ -162,7 +162,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "UpdateCustomer",
     "RelativePath": "api/Customer/{id}",
     "HttpMethod": "PUT",
@@ -183,7 +183,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "DeleteCustomer",
     "RelativePath": "api/Customer/{id}",
     "HttpMethod": "DELETE",
@@ -204,7 +204,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "RestoreCustomer",
     "RelativePath": "api/Customer/{id}/restore",
     "HttpMethod": "POST",
@@ -220,7 +220,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "BulkDeleteCustomers",
     "RelativePath": "api/Customer/bulk-delete",
     "HttpMethod": "POST",
@@ -241,7 +241,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.CustomerController",
+    "ContainingType": "CleanArchitecture.API.Controllers.CustomerController",
     "Method": "BulkRestoreCustomers",
     "RelativePath": "api/Customer/bulk-restore",
     "HttpMethod": "POST",
@@ -257,7 +257,192 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderController",
+    "Method": "GetOrders",
+    "RelativePath": "api/Order",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CleanArchitecture.Application.DTOs.Order.CreateOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderController",
+    "Method": "GetOrderById",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderController",
+    "Method": "UpdateOrder",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CleanArchitecture.Application.DTOs.Order.UpdateOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderDetailController",
+    "Method": "GetOrderDetail",
+    "RelativePath": "api/OrderDetail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderDetailController",
+    "Method": "Create",
+    "RelativePath": "api/OrderDetail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createOrderDetailDto",
+        "Type": "CleanArchitecture.Application.DTOs.OrderDetail.CreateOrderDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderDetailController",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/OrderDetail/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderDetailController",
+    "Method": "Update",
+    "RelativePath": "api/OrderDetail/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateOrderDetailDto",
+        "Type": "CleanArchitecture.Application.DTOs.OrderDetail.UpdateOrderDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.OrderDetailController",
+    "Method": "Delete",
+    "RelativePath": "api/OrderDetail/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "Create",
     "RelativePath": "api/Product",
     "HttpMethod": "POST",
@@ -288,7 +473,7 @@
     ]
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "Index",
     "RelativePath": "api/Product",
     "HttpMethod": "GET",
@@ -334,7 +519,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "GetById",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "GET",
@@ -350,7 +535,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "Delete",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "DELETE",
@@ -371,7 +556,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "Update",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "PATCH",
@@ -392,7 +577,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "BulkDelete",
     "RelativePath": "api/Product/bulk-delete",
     "HttpMethod": "DELETE",
@@ -413,7 +598,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "BulkRestore",
     "RelativePath": "api/Product/bulk-restore",
     "HttpMethod": "POST",
@@ -429,7 +614,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.ProductController",
+    "ContainingType": "CleanArchitecture.API.Controllers.ProductController",
     "Method": "Restore",
     "RelativePath": "api/Product/restore/{id}",
     "HttpMethod": "POST",
@@ -445,7 +630,81 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.LinQController",
+    "ContainingType": "CleanArchitecture.API.Controllers.RentalsController",
+    "Method": "CreateRental",
+    "RelativePath": "api/Rentals",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CleanArchitecture.Application.Features.Rentals.Commands.CreateRental.CreateRentalCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.RentalsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Rentals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.RentalsController",
+    "Method": "GetById",
+    "RelativePath": "api/Rentals/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.RentalsController",
+    "Method": "DeleteRental",
+    "RelativePath": "api/Rentals/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.RentalsController",
+    "Method": "ReturnRental",
+    "RelativePath": "api/Rentals/{id}/return",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CleanArchitecture.API.Controllers.LinQController",
     "Method": "Grouping",
     "RelativePath": "group",
     "HttpMethod": "GET",
@@ -455,7 +714,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.LinQController",
+    "ContainingType": "CleanArchitecture.API.Controllers.LinQController",
     "Method": "Index",
     "RelativePath": "i",
     "HttpMethod": "GET",
@@ -465,7 +724,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.LinQController",
+    "ContainingType": "CleanArchitecture.API.Controllers.LinQController",
     "Method": "Joining",
     "RelativePath": "join",
     "HttpMethod": "GET",
@@ -475,7 +734,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CleanArchitecture.API.Controller.LinQController",
+    "ContainingType": "CleanArchitecture.API.Controllers.LinQController",
     "Method": "Paging",
     "RelativePath": "Paging",
     "HttpMethod": "GET",
