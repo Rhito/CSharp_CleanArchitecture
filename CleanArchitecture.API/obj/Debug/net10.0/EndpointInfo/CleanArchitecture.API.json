@@ -5,6 +5,89 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/check-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Category": {
       "get": {
         "tags": [
@@ -1130,114 +1213,6 @@
           }
         }
       }
-    },
-    "/api/Rentals": {
-      "post": {
-        "tags": [
-          "Rentals"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRentalCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRentalCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRentalCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Rentals"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Rentals/{id}": {
-      "get": {
-        "tags": [
-          "Rentals"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Rentals"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Rentals/{id}/return": {
-      "put": {
-        "tags": [
-          "Rentals"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -1394,24 +1369,22 @@
         },
         "additionalProperties": false
       },
-      "CreateRentalCommand": {
+      "LoginRequest": {
+        "required": [
+          "Identifier",
+          "Password"
+        ],
         "type": "object",
         "properties": {
-          "VehicleDescription": {
-            "type": "string",
-            "nullable": true
+          "Identifier": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string"
           },
-          "StartDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "EndDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "PricePerDay": {
-            "type": "number",
-            "format": "double"
+          "Password": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1442,6 +1415,46 @@
           }
         },
         "additionalProperties": { }
+      },
+      "RegisterRequest": {
+        "required": [
+          "Email",
+          "FullName",
+          "Password",
+          "UserName"
+        ],
+        "type": "object",
+        "properties": {
+          "FullName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Email": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "Password": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string"
+          },
+          "UserName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "PhoneNumber": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string",
+            "format": "tel",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "UpdateCategoryDto": {
         "type": "object",
@@ -1570,6 +1583,9 @@
   },
   "tags": [
     {
+      "name": "Auth"
+    },
+    {
       "name": "Category"
     },
     {
@@ -1586,9 +1602,6 @@
     },
     {
       "name": "Product"
-    },
-    {
-      "name": "Rentals"
     }
   ]
 }

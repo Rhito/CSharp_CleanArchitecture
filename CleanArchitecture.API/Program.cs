@@ -3,8 +3,12 @@ using CleanArchitecture.Application.DTOs.Validation;
 using CleanArchitecture.Application.IRepository;
 using CleanArchitecture.Application.IService;
 using CleanArchitecture.Application.Service;
+using CleanArchitecture.Infrastructure.Data;
+using CleanArchitecture.Infrastructure.Data.Entities;
 using CleanArchitecture.Infrastructure.Repository;
+using CleanArchitecture.Infrastructure.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +31,9 @@ builder.Services.AddDbContext<CleanArchitecture.Infrastructure.Data.ApplicationD
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddIdentity <ApplicationUser, IdentityRole> ()
+    .AddEntityFrameworkStores <ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 // open CORS for all access
 builder.Services.AddCors(options =>
@@ -55,6 +62,8 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
+
+builder.Services.AddScoped<IIdentityService, IdentityService>();
 
 builder.Services.Configure<Microsoft.AspNetCore.Mvc.ApiBehaviorOptions>(options =>
 {
