@@ -8,9 +8,16 @@ using CleanArchitecture.Infrastructure.Data.Entities;
 using CleanArchitecture.Infrastructure.Repository;
 using CleanArchitecture.Infrastructure.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,9 +38,33 @@ builder.Services.AddDbContext<CleanArchitecture.Infrastructure.Data.ApplicationD
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddIdentity <ApplicationUser, IdentityRole> ()
+
+// add Identity and Roles from db contex 
+builder.Services.AddIdentity <ApplicationUser, ApplicationRole> ()
     .AddEntityFrameworkStores <ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+// Implement read JWT 
+builder.Services.AddAuthentication(options =>
+    {
+        // Set default authentication scheme
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        // Configure JWT validation parameters
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+            ValidAudience = builder.Configuration["JwtSettings:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]!))
+        };
+    });
 
 // open CORS for all access
 builder.Services.AddCors(options =>
@@ -43,7 +74,37 @@ builder.Services.AddCors(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    // Add Bearer token security definition
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter 'Bearer' followed by your token in the text box below.\nExample: Bearer 12345abcdef"
+    });
+    // Add global security requirement
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+   {
+       {
+           new OpenApiSecurityScheme
+           {
+               Reference = new OpenApiReference
+               {
+                   Type = ReferenceType.SecurityScheme,
+                   Id = "Bearer"
+               }
+           },
+           Array.Empty<string>()
+       }
+   });
+});
+
+
 
 //build scope for repository and service
 builder.Services.AddScoped<IProductRepository, ProductEFRepository>();
@@ -97,11 +158,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
 }
 // Allow All access
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

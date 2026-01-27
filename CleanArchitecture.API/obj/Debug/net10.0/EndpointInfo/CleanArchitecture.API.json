@@ -1,8 +1,8 @@
 {
-  "openapi": "3.0.4",
+  "openapi": "3.0.1",
   "info": {
-    "title": "CleanArchitecture.API",
-    "version": "1.0"
+    "title": "My API",
+    "version": "v1"
   },
   "paths": {
     "/api/Auth/register": {
@@ -80,6 +80,18 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/get-profile": {
+      "get": {
+        "tags": [
+          "Auth"
         ],
         "responses": {
           "200": {
@@ -1299,7 +1311,6 @@
             "format": "int32"
           },
           "UnitPrice": {
-            "maximum": 7.922816251426434E+28,
             "minimum": 0.01,
             "type": "number",
             "format": "double"
@@ -1325,7 +1336,6 @@
             "format": "date-time"
           },
           "TotalAmount": {
-            "maximum": 7.922816251426434E+28,
             "minimum": 0.01,
             "type": "number",
             "format": "double"
@@ -1513,7 +1523,6 @@
             "format": "int32"
           },
           "UnitPrice": {
-            "maximum": 7.922816251426434E+28,
             "minimum": 0.01,
             "type": "number",
             "format": "double"
@@ -1579,29 +1588,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter 'Bearer' followed by your token in the text box below.\nExample: Bearer 12345abcdef",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   },
-  "tags": [
+  "security": [
     {
-      "name": "Auth"
-    },
-    {
-      "name": "Category"
-    },
-    {
-      "name": "Customer"
-    },
-    {
-      "name": "LinQ"
-    },
-    {
-      "name": "Order"
-    },
-    {
-      "name": "OrderDetail"
-    },
-    {
-      "name": "Product"
+      "Bearer": [ ]
     }
   ]
 }

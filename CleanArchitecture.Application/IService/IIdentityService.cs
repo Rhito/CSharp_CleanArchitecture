@@ -5,8 +5,12 @@ namespace CleanArchitecture.Application.IService
 {
     public interface IIdentityService
     {
-        Task<LoginResponse> LoginAsync(LoginRequest request);
+        Task<AuthResponse> LoginAsync(LoginRequest request);
 
-        Task<RegisterResponse> RegisterAsync(RegisterRequest request); 
+        Task<AuthResponse> RegisterAsync(RegisterRequest request);
+
+        Task<UserProfileResponse> GetProfileByIdAsync(string userID);
+        Task<AuthResponse> RefreshTokenAsync(TokenModel model);
+
     }
 }

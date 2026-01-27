@@ -10,12 +10,12 @@ namespace CleanArchitecture.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         // Đã xóa DbSet<Rental>
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -43,7 +43,18 @@ namespace CleanArchitecture.Infrastructure.Data
                 .Property(od => od.UnitPrice)
                 .HasColumnType("decimal(18,2)");
 
-            // Đã xóa cấu hình RentalConfiguration
+            // Cấu hình RefreshToken
+            modelBuilder.Entity<RefreshToken>(entity =>
+            {
+                entity.ToTable("RefreshTokens");
+
+                entity.HasKey(rt => rt.Id);
+
+                entity.HasOne<ApplicationUser>()
+                .WithMany(u => u.RefreshTokens) // Một RefreshToken thuộc về một User
+                .HasForeignKey(rt => rt.UserId) // Một User có nhiều RefreshToken
+                .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 }

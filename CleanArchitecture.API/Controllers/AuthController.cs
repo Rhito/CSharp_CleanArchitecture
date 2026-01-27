@@ -1,10 +1,12 @@
 ﻿using CleanArchitecture.Application.DTOs.Auth;
 using CleanArchitecture.Application.IService;
 using CleanArchitecture.Application.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace CleanArchitecture.API.Controllers
@@ -27,7 +29,7 @@ namespace CleanArchitecture.API.Controllers
         public async Task<IActionResult> Register([FromBody] Application.DTOs.Auth.RegisterRequest request)
         {
             var result = await _identityService.RegisterAsync(request);
-            var response = ApiResponse<RegisterResponse>.Success(result);
+            var response = ApiResponse<AuthResponse>.Success(result);
             return Ok(response);
         }
 
@@ -36,7 +38,7 @@ namespace CleanArchitecture.API.Controllers
         public async Task<IActionResult> Login([FromBody] Application.DTOs.Auth.LoginRequest request)
         {
             var result = await _identityService.LoginAsync(request);
-            var response = ApiResponse<LoginResponse>.Success(result);
+            var response = ApiResponse<AuthResponse>.Success(result);
             return Ok(response);
         }
         [HttpPost("check-token")]
@@ -63,13 +65,35 @@ namespace CleanArchitecture.API.Controllers
 
                 // 3. Nếu code chạy đến dòng này nghĩa là Token "sạch"
                 // principal chứa toàn bộ thông tin (Claims) của user
-                return Ok($"Token hợp lệ! Xin chào user: {principal.Identity?.Name}");
+                return Ok($"Token hợp lệ! Xin chào user: {principal.FindFirst(ClaimTypes.NameIdentifier)?.Value}");
             }
             catch (Exception ex)
             {
                 // 4. Bắt lỗi nếu token hết hạn, sai chữ ký, hoặc format sai
                 return Unauthorized(new { Message = "Token không hợp lệ", Error = ex.Message });
             }
+        }
+
+        [HttpGet("get-profile")]
+        [Authorize]
+        public async Task<IActionResult> GetProfile()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+            var result = await _identityService.GetProfileByIdAsync(userId);
+            var response = ApiResponse<UserProfileResponse>.Success(result);
+            return Ok(response);
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken([FromBody] TokenModel model)
+        {
+            var result = await _identityService.RefreshTokenAsync(model);
+            var response = ApiResponse<AuthResponse>.Success(result);
+            return Ok(response);
         }
     }
 }
